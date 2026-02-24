@@ -12,24 +12,23 @@
   <style>
     /* ─── TOKENS ─────────────────────────────────────── */
     :root {
-      --ivory:        #F9F7F3;
-      --linen:        #F2EEE6;
-      --stone:        #E4DDD2;
-      --sage:         #89A885;
-      --sage-mid:     #6B8F67;
-      --sage-dark:    #4D7249;
-      --forest:       #2A3F28;
-      --charcoal:     #1C1C1A;
-      --ink:          #3A3935;
-      --muted:        #6B6860;
-      --faint:        #9A9890;
-      --white:        #FFFFFF;
-      --rule:         rgba(42,63,40,0.12);
+      --ivory:       #F9F7F3;
+      --linen:       #F2EEE6;
+      --stone:       #E4DDD2;
+      --sage:        #89A885;
+      --sage-mid:    #6B8F67;
+      --sage-dark:   #4D7249;
+      --forest:      #2A3F28;
+      --charcoal:    #1C1C1A;
+      --ink:         #3A3935;
+      --muted:       #6B6860;
+      --faint:       #9A9890;
+      --white:       #FFFFFF;
+      --rule:        rgba(42,63,40,0.12);
 
-      --font-serif:  'Cormorant Garamond', 'Georgia', serif;
-      --font-sans:   'DM Sans', system-ui, -apple-system, sans-serif;
+      --font-serif:  'Cormorant Garamond', Georgia, serif;
+      --font-sans:   'DM Sans', system-ui, sans-serif;
       --ease:        cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     /* ─── RESET ──────────────────────────────────────── */
@@ -53,325 +52,134 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 6vw; height: 68px;
-      background: rgba(249,247,243,0.92);
+      background: rgba(249,247,243,0.94);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid transparent;
       transition: border-color 0.4s, box-shadow 0.4s;
     }
-    nav.scrolled {
-      border-color: var(--rule);
-      box-shadow: 0 1px 32px rgba(0,0,0,0.05);
-    }
-    .nav-logo {
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
-      font-weight: 500;
-      color: var(--forest);
-      letter-spacing: 0.01em;
-    }
+    nav.scrolled { border-color: var(--rule); box-shadow: 0 1px 32px rgba(0,0,0,0.05); }
+    .nav-logo { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 500; color: var(--forest); }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
-    .nav-links a {
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      transition: color 0.2s;
-    }
+    .nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
     .nav-links a:hover { color: var(--forest); }
-    .nav-links .nav-cta {
-      padding: 0.55rem 1.4rem;
-      background: var(--forest);
-      color: var(--white) !important;
-      border-radius: 100px;
-      letter-spacing: 0.08em;
-      transition: background 0.25s, transform 0.2s;
-    }
+    .nav-links .nav-cta { padding: 0.55rem 1.4rem; background: var(--forest); color: var(--white) !important; border-radius: 100px; letter-spacing: 0.08em; transition: background 0.25s, transform 0.2s; }
     .nav-links .nav-cta:hover { background: var(--sage-dark); transform: translateY(-1px); }
 
     /* ─── SHARED ─────────────────────────────────────── */
-    .label {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--sage-mid); margin-bottom: 1.1rem;
-    }
-    .label::before {
-      content: ''; display: block;
-      width: 28px; height: 1px; background: var(--sage);
-    }
-    .h2 {
-      font-family: var(--font-serif);
-      font-size: clamp(2.4rem, 4.2vw, 3.6rem);
-      font-weight: 400; line-height: 1.15;
-      color: var(--forest);
-    }
+    .label { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sage-mid); margin-bottom: 1.1rem; }
+    .label::before { content: ''; display: block; width: 28px; height: 1px; background: var(--sage); }
+    .h2 { font-family: var(--font-serif); font-size: clamp(2.4rem, 4.2vw, 3.6rem); font-weight: 400; line-height: 1.15; color: var(--forest); }
     .h2 em { font-style: italic; color: var(--sage-mid); font-weight: 300; }
 
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.8rem 1.8rem; border-radius: 100px;
-      font-size: 0.85rem; font-weight: 500;
-      letter-spacing: 0.04em; border: none;
-      transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease), background 0.22s;
-    }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.8rem; border-radius: 100px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; border: none; transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease), background 0.22s; }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.11); }
     .btn:active { transform: translateY(0); box-shadow: none; }
     .btn-dark { background: var(--forest); color: var(--white); }
     .btn-dark:hover { background: var(--charcoal); }
-    .btn-border {
-      background: transparent; color: var(--forest);
-      border: 1.5px solid rgba(42,63,40,0.3);
-    }
+    .btn-border { background: transparent; color: var(--forest); border: 1.5px solid rgba(42,63,40,0.3); }
     .btn-border:hover { border-color: var(--forest); background: var(--forest); color: var(--white); }
 
     /* ─── HERO ───────────────────────────────────────── */
-    #hero {
-      min-height: 100vh; padding-top: 68px;
-      display: grid; grid-template-columns: 52% 48%;
-      overflow: hidden;
-    }
-    .hero-left {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 5rem 5rem 5rem 8vw;
-    }
-    .hero-pretitle {
-      display: flex; align-items: center; gap: 0.75rem;
-      margin-bottom: 2rem;
-    }
+    #hero { min-height: 100vh; padding-top: 68px; display: grid; grid-template-columns: 52% 48%; overflow: hidden; }
+    .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 5rem 5rem 5rem 8vw; }
+    .hero-pretitle { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem; }
     .hero-pretitle-line { width: 32px; height: 1px; background: var(--sage); }
-    .hero-pretitle span {
-      font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--sage-mid);
-    }
-    .hero-title {
-      font-family: var(--font-serif);
-      font-size: clamp(3rem, 5vw, 5.2rem);
-      font-weight: 300; line-height: 1.08;
-      color: var(--forest); margin-bottom: 1.75rem;
-    }
+    .hero-pretitle span { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage-mid); }
+    .hero-title { font-family: var(--font-serif); font-size: clamp(3rem, 5vw, 5.2rem); font-weight: 300; line-height: 1.08; color: var(--forest); margin-bottom: 1.75rem; }
     .hero-title em { font-style: italic; color: var(--sage-mid); }
     .hero-title strong { font-weight: 600; display: block; }
-    .hero-body {
-      font-size: 1.05rem; line-height: 1.75;
-      color: var(--muted); max-width: 380px;
-      margin-bottom: 2.5rem;
-    }
+    .hero-body { font-size: 1.05rem; line-height: 1.75; color: var(--muted); max-width: 380px; margin-bottom: 2.5rem; }
     .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; }
-    .hero-divider {
-      width: 40px; height: 1px;
-      background: var(--stone); margin-bottom: 2rem;
-    }
+    .hero-divider { width: 40px; height: 1px; background: var(--stone); margin-bottom: 2rem; }
     .hero-stats { display: flex; gap: 3rem; }
-    .stat-num {
-      font-family: var(--font-serif);
-      font-size: 2rem; font-weight: 500;
-      color: var(--forest); line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.76rem; color: var(--faint);
-      margin-top: 0.3rem; letter-spacing: 0.04em;
-    }
-
-    .hero-right {
-      position: relative; background: var(--linen);
-    }
-    .hero-right img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center 15%;
-    }
-    .hero-right-gradient {
-      position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(249,247,243,0.3) 0%, transparent 30%);
-      pointer-events: none;
-    }
-    .hero-tag {
-      position: absolute; bottom: 2.5rem; left: -1px;
-      background: var(--white);
-      border: 1px solid var(--rule);
-      border-left: none;
-      padding: 1rem 1.5rem 1rem 2rem;
-      display: flex; flex-direction: column; gap: 0.2rem;
-    }
-    .hero-tag strong {
-      font-family: var(--font-serif);
-      font-size: 1rem; font-weight: 500; color: var(--forest);
-    }
+    .stat-num { font-family: var(--font-serif); font-size: 2rem; font-weight: 500; color: var(--forest); line-height: 1; }
+    .stat-label { font-size: 0.76rem; color: var(--faint); margin-top: 0.3rem; letter-spacing: 0.04em; }
+    .hero-right { position: relative; background: var(--linen); }
+    .hero-right img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; }
+    .hero-right-gradient { position: absolute; inset: 0; background: linear-gradient(to right, rgba(249,247,243,0.3) 0%, transparent 30%); pointer-events: none; }
+    .hero-tag { position: absolute; bottom: 2.5rem; left: -1px; background: var(--white); border: 1px solid var(--rule); border-left: none; padding: 1rem 1.5rem 1rem 2rem; display: flex; flex-direction: column; gap: 0.2rem; }
+    .hero-tag strong { font-family: var(--font-serif); font-size: 1rem; font-weight: 500; color: var(--forest); }
     .hero-tag span { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.04em; }
 
-    /* ─── ABOUT ──────────────────────────────────────── */
-    #about {
+    /* ─── ABOUT (text-only, no photo) ───────────────── */
+    #about { background: var(--white); padding: 7rem 8vw; }
+    .about-inner {
       display: grid; grid-template-columns: 1fr 1fr;
-      background: var(--white);
+      gap: 6rem; align-items: start; max-width: 1200px;
     }
-    .about-photo {
-      position: relative; overflow: hidden; min-height: 600px;
+    .about-left {}
+    .about-left .h2 { margin-bottom: 1.5rem; }
+    .about-left p { font-size: 1.02rem; color: var(--muted); line-height: 1.8; margin-top: 1.25rem; }
+    .about-left .about-cta { margin-top: 2.5rem; }
+    .about-right {
+      display: flex; flex-direction: column;
+      justify-content: flex-start; padding-top: 4rem;
     }
-    .about-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center 20%;
-    }
-    .about-photo-label {
-      position: absolute; bottom: 2rem; right: 2rem;
-      background: var(--white); padding: 0.6rem 1rem;
-      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--sage-mid); font-weight: 500;
-      border: 1px solid var(--rule);
-    }
-    .about-text {
-      padding: 6rem 6vw 6rem 5rem;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .about-text p {
-      font-size: 1.02rem; color: var(--muted);
-      line-height: 1.8; margin-top: 1.25rem;
-    }
-    .about-quote {
-      margin-top: 2.5rem; padding: 2rem 2.5rem;
-      background: var(--linen); border-left: 2px solid var(--sage);
-    }
-    .about-quote blockquote {
-      font-family: var(--font-serif);
-      font-size: 1.45rem; font-style: italic; font-weight: 400;
-      color: var(--forest); line-height: 1.45;
-    }
-    .about-quote cite {
-      display: block; font-family: var(--font-sans);
-      font-size: 0.76rem; font-style: normal;
-      font-weight: 500; color: var(--sage-mid);
-      letter-spacing: 0.1em; text-transform: uppercase;
-      margin-top: 0.75rem;
-    }
-    .about-cta { margin-top: 2.5rem; }
+    .about-quote { padding: 2.5rem 2.5rem 2.5rem 2rem; background: var(--linen); border-left: 2px solid var(--sage); position: relative; }
+    .about-quote blockquote { font-family: var(--font-serif); font-size: 1.6rem; font-style: italic; font-weight: 400; color: var(--forest); line-height: 1.45; }
+    .about-quote cite { display: block; font-family: var(--font-sans); font-size: 0.76rem; font-style: normal; font-weight: 500; color: var(--sage-mid); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 1rem; }
+    .about-details { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .about-detail { display: flex; align-items: center; gap: 0.75rem; font-size: 0.9rem; color: var(--muted); }
+    .about-detail-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--sage); flex-shrink: 0; }
 
     /* ─── SERVICES ───────────────────────────────────── */
     #services { padding: 7rem 8vw; background: var(--ivory); }
     .services-head { max-width: 520px; margin-bottom: 4rem; }
     .services-head .h2 { margin-bottom: 1rem; }
     .services-head p { font-size: 1rem; color: var(--muted); line-height: 1.75; }
-
     .services-list { display: flex; flex-direction: column; }
-    .service-row {
-      display: grid; grid-template-columns: 80px 1fr 1fr;
-      gap: 0; align-items: start;
-      padding: 2.5rem 0; border-bottom: 1px solid var(--rule);
-      transition: background 0.2s;
-    }
+    .service-row { display: grid; grid-template-columns: 80px 1fr 1fr; gap: 0; align-items: start; padding: 2.5rem 0; border-bottom: 1px solid var(--rule); transition: background 0.2s; }
     .service-row:first-child { border-top: 1px solid var(--rule); }
-    .service-num {
-      font-family: var(--font-serif);
-      font-size: 1.1rem; font-weight: 400;
-      color: var(--sage); padding-top: 0.2rem;
-    }
-    .service-name {
-      font-family: var(--font-serif);
-      font-size: 1.55rem; font-weight: 400;
-      color: var(--forest); line-height: 1.3;
-      padding-right: 3rem;
-    }
-    .service-desc {
-      font-size: 0.9rem; color: var(--muted);
-      line-height: 1.75; padding-top: 0.3rem;
-    }
+    .service-num { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 400; color: var(--sage); padding-top: 0.2rem; }
+    .service-name { font-family: var(--font-serif); font-size: 1.55rem; font-weight: 400; color: var(--forest); line-height: 1.3; padding-right: 3rem; }
+    .service-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.75; padding-top: 0.3rem; }
     .service-row:hover .service-name { color: var(--sage-dark); }
 
     /* ─── OILS ───────────────────────────────────────── */
     #oils { display: grid; grid-template-columns: 1fr 1fr; background: var(--linen); }
-    .oils-left {
-      padding: 7rem 4rem 7rem 8vw;
-      display: flex; flex-direction: column; justify-content: flex-start;
-    }
-    .oils-left .h2 { margin-bottom: 1rem; }
-    .oils-left > p {
-      font-size: 1rem; color: var(--muted);
-      line-height: 1.8; margin-bottom: 2.5rem;
-    }
-    .oils-photo {
-      width: 100%; aspect-ratio: 3/4;
-      border-radius: 4px; overflow: hidden;
-      margin-bottom: 2.5rem;
-    }
-    .oils-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center 20%;
-    }
-    .oils-approach {
-      padding: 1.75rem 2rem; background: var(--white);
-      border: 1px solid var(--rule);
-    }
-    .oils-approach h4 {
-      font-family: var(--font-serif);
-      font-size: 1.1rem; font-weight: 500;
-      color: var(--forest); margin-bottom: 0.6rem;
-    }
-    .oils-approach p { font-size: 0.88rem; color: var(--muted); line-height: 1.75; }
-    .oils-goals { margin-top: 2rem; }
-    .oils-goals-label {
-      font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--sage-mid); margin-bottom: 0.85rem;
-    }
-    .goal-btns { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .goal-btn {
-      padding: 0.45rem 1.1rem;
-      border: 1.5px solid rgba(42,63,40,0.25);
-      border-radius: 100px; background: transparent;
-      font-size: 0.82rem; font-weight: 500;
-      color: var(--ink); letter-spacing: 0.03em;
-      transition: all 0.2s;
-    }
-    .goal-btn:hover, .goal-btn.active {
-      background: var(--forest); color: var(--white);
-      border-color: var(--forest);
-    }
 
-    .oils-right {
-      padding: 7rem 8vw 7rem 4rem;
-      display: flex; flex-direction: column; justify-content: flex-start;
-    }
+    .oils-left { padding: 7rem 4rem 7rem 8vw; display: flex; flex-direction: column; }
+    .oils-left .h2 { margin-bottom: 1rem; }
+    .oils-left > .oils-intro { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+
+    /* Full-image display for the oil photo */
+    .oils-photo { width: 100%; margin-bottom: 2rem; border-radius: 4px; overflow: hidden; }
+    .oils-photo img { width: 100%; height: auto; display: block; object-fit: cover; }
+
+    /* Kit image below */
+    .oils-kit-img { width: 100%; border-radius: 4px; overflow: hidden; margin-bottom: 2rem; }
+    .oils-kit-img img { width: 100%; height: auto; display: block; }
+
+    .oils-approach { padding: 1.75rem 2rem; background: var(--white); border: 1px solid var(--rule); margin-bottom: 2rem; }
+    .oils-approach h4 { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 500; color: var(--forest); margin-bottom: 0.6rem; }
+    .oils-approach p { font-size: 0.88rem; color: var(--muted); line-height: 1.75; }
+
+    .oils-goals-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage-mid); margin-bottom: 0.85rem; }
+    .goal-btns { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .goal-btn { padding: 0.45rem 1.1rem; border: 1.5px solid rgba(42,63,40,0.25); border-radius: 100px; background: transparent; font-size: 0.82rem; font-weight: 500; color: var(--ink); letter-spacing: 0.03em; transition: all 0.2s; }
+    .goal-btn:hover, .goal-btn.active { background: var(--forest); color: var(--white); border-color: var(--forest); }
+
+    /* Accordion */
+    .oils-right { padding: 7rem 8vw 7rem 4rem; display: flex; flex-direction: column; justify-content: flex-start; }
     .oil-accordion { display: flex; flex-direction: column; }
-    .oil-item {
-      border-bottom: 1px solid var(--rule);
-      overflow: hidden;
-    }
+    .oil-item { border-bottom: 1px solid var(--rule); overflow: hidden; }
     .oil-item:first-child { border-top: 1px solid var(--rule); }
-    .oil-header {
-      display: flex; align-items: center;
-      gap: 1.25rem; padding: 1.1rem 0;
-      cursor: pointer; user-select: none;
-    }
-    .oil-n {
-      font-family: var(--font-serif);
-      font-size: 0.85rem; font-weight: 400;
-      color: var(--faint); width: 24px;
-      flex-shrink: 0; text-align: right;
-    }
-    .oil-title {
-      flex: 1;
-      font-family: var(--font-serif);
-      font-size: 1.2rem; font-weight: 400;
-      color: var(--forest); line-height: 1;
-      transition: color 0.2s;
-    }
+    .oil-header { display: flex; align-items: center; gap: 1.25rem; padding: 1.1rem 0; cursor: pointer; user-select: none; }
+    .oil-n { font-family: var(--font-serif); font-size: 0.85rem; font-weight: 400; color: var(--faint); width: 24px; flex-shrink: 0; text-align: right; }
+    .oil-title { flex: 1; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400; color: var(--forest); line-height: 1; transition: color 0.2s; }
     .oil-item.active .oil-title { color: var(--sage-dark); }
-    .oil-toggle {
-      width: 22px; height: 22px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-    }
+    .oil-toggle { width: 22px; height: 22px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
     .oil-toggle svg { transition: transform 0.3s var(--ease); }
     .oil-item.active .oil-toggle svg { transform: rotate(45deg); }
-    .oil-body {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.38s var(--ease);
-      padding-left: calc(24px + 1.25rem);
-    }
-    .oil-item.active .oil-body { max-height: 80px; }
-    .oil-body p {
-      padding-bottom: 1.1rem;
-      font-size: 0.88rem; color: var(--muted); line-height: 1.7;
-    }
+
+    .oil-body { max-height: 0; overflow: hidden; transition: max-height 0.42s var(--ease); padding-left: calc(24px + 1.25rem); }
+    .oil-item.active .oil-body { max-height: 220px; }
+
+    .oil-body-inner { display: grid; grid-template-columns: 90px 1fr; gap: 1rem; align-items: start; padding-bottom: 1.25rem; }
+    .oil-thumb { width: 90px; height: 90px; border-radius: 4px; overflow: hidden; flex-shrink: 0; }
+    .oil-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .oil-body-inner p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; padding-top: 0.2rem; }
 
     /* ─── WHY ────────────────────────────────────────── */
     #why { padding: 7rem 8vw; background: var(--forest); }
@@ -380,185 +188,76 @@
     #why .h2 { color: var(--white); margin-bottom: 4rem; }
     #why .h2 em { color: rgba(137,168,133,0.85); }
     .why-rows { display: flex; flex-direction: column; }
-    .why-row {
-      display: grid; grid-template-columns: 80px 1fr 1fr;
-      gap: 0; padding: 2.5rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
+    .why-row { display: grid; grid-template-columns: 80px 1fr 1fr; gap: 0; padding: 2.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
     .why-row:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
-    .why-idx {
-      font-family: var(--font-serif);
-      font-size: 1rem; font-weight: 400;
-      color: rgba(137,168,133,0.6); padding-top: 0.25rem;
-    }
-    .why-name {
-      font-family: var(--font-serif);
-      font-size: 1.5rem; font-weight: 400;
-      color: var(--white); line-height: 1.3;
-      padding-right: 3rem;
-    }
+    .why-idx { font-family: var(--font-serif); font-size: 1rem; font-weight: 400; color: rgba(137,168,133,0.6); padding-top: 0.25rem; }
+    .why-name { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; color: var(--white); line-height: 1.3; padding-right: 3rem; }
     .why-desc { font-size: 0.9rem; color: rgba(255,255,255,0.52); line-height: 1.75; padding-top: 0.35rem; }
 
     /* ─── GALLERY ────────────────────────────────────── */
     #gallery { padding: 7rem 8vw; background: var(--ivory); }
     .gallery-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem; }
-    .gallery-head-left {}
     .gallery-head-left p { font-size: 1rem; color: var(--muted); margin-top: 0.4rem; line-height: 1.6; }
-    .gallery-link {
-      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--sage-dark);
-      border-bottom: 1px solid var(--sage); padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s; white-space: nowrap;
-    }
+    .gallery-link { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-dark); border-bottom: 1px solid var(--sage); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
     .gallery-link:hover { color: var(--forest); border-color: var(--forest); }
 
-    .gallery-masonry {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: auto;
-      gap: 10px;
-    }
-    .g-item {
-      overflow: hidden; border-radius: 2px;
-      position: relative; background: var(--stone);
-    }
-    .g-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.55s var(--ease), filter 0.55s;
-      filter: brightness(1);
-    }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .g-item { overflow: hidden; border-radius: 2px; position: relative; background: var(--stone); aspect-ratio: 3/4; }
+    .g-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.55s var(--ease), filter 0.55s; }
     .g-item:hover img { transform: scale(1.04); filter: brightness(0.92); }
-    .g-item:nth-child(1) { grid-row: span 2; }
-    .g-item:nth-child(5) { grid-row: span 2; }
-    .g-item { aspect-ratio: 3/4; }
-    .g-item:nth-child(1), .g-item:nth-child(5) { aspect-ratio: unset; }
 
     /* ─── CONTACT ────────────────────────────────────── */
     #contact { display: grid; grid-template-columns: 1fr 1fr; background: var(--white); }
     .contact-left { padding: 7rem 4rem 7rem 8vw; }
     .contact-left > p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-top: 1.25rem; margin-bottom: 3rem; }
     .contact-channels { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--rule); }
-    .channel {
-      display: flex; align-items: center; gap: 1.25rem;
-      padding: 1.25rem 1.5rem; background: var(--ivory);
-      border-bottom: 1px solid var(--rule);
-      transition: background 0.2s;
-      text-decoration: none; color: inherit;
-    }
+    .channel { display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem 1.5rem; background: var(--ivory); border-bottom: 1px solid var(--rule); transition: background 0.2s; text-decoration: none; color: inherit; }
     .channel:last-child { border-bottom: none; }
     .channel:hover { background: var(--linen); }
-    .channel-icon {
-      width: 42px; height: 42px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .channel-icon svg { width: 20px; height: 20px; }
+    .channel-icon { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .channel-icon svg { width: 20px; height: 20px; fill: none; stroke: white; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
     .channel-icon.tg { background: #229ED9; }
     .channel-icon.ig { background: linear-gradient(135deg, #f9ce34, #ee2a7b, #6228d7); }
-    .channel-icon svg { fill: none; stroke: white; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
     .channel-text strong { display: block; font-size: 0.9rem; font-weight: 600; color: var(--forest); }
-    .channel-text span { font-size: 0.8rem; color: var(--faint); letter-spacing: 0.02em; }
+    .channel-text span { font-size: 0.8rem; color: var(--faint); }
 
     .contact-right { padding: 7rem 8vw 7rem 4rem; }
-    .contact-right h3 {
-      font-family: var(--font-serif); font-size: 1.6rem;
-      font-weight: 400; color: var(--forest); margin-bottom: 2rem;
-    }
+    .contact-right h3 { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 400; color: var(--forest); margin-bottom: 2rem; }
     .form { display: flex; flex-direction: column; gap: 1.25rem; }
     .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
     .field { display: flex; flex-direction: column; gap: 0.45rem; }
-    .field label {
-      font-size: 0.76rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--muted);
-    }
-    .field input, .field textarea, .field select {
-      padding: 0.85rem 1rem;
-      background: var(--ivory);
-      border: 1px solid var(--stone);
-      border-radius: 0;
-      font-family: var(--font-sans); font-size: 0.9rem;
-      color: var(--ink); outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      resize: none;
-      appearance: none;
-    }
-    .field input:focus, .field textarea:focus {
-      border-color: var(--sage-mid);
-      box-shadow: 0 0 0 3px rgba(107,143,103,0.12);
-    }
+    .field label { font-size: 0.76rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .field input, .field textarea { padding: 0.85rem 1rem; background: var(--ivory); border: 1px solid var(--stone); border-radius: 0; font-family: var(--font-sans); font-size: 0.9rem; color: var(--ink); outline: none; transition: border-color 0.2s, box-shadow 0.2s; resize: none; }
+    .field input:focus, .field textarea:focus { border-color: var(--sage-mid); box-shadow: 0 0 0 3px rgba(107,143,103,0.12); }
     .field textarea { min-height: 130px; }
-    .form-submit { padding-top: 0.25rem; }
     .form-submit .btn { width: 100%; justify-content: center; font-size: 0.88rem; letter-spacing: 0.06em; border-radius: 0; padding: 1rem; }
-    .form-ok {
-      display: none; padding: 1rem 1.25rem;
-      background: rgba(107,143,103,0.1); border: 1px solid rgba(107,143,103,0.25);
-      font-size: 0.88rem; color: var(--sage-dark); line-height: 1.6;
-    }
+    .form-ok { display: none; padding: 1rem 1.25rem; background: rgba(107,143,103,0.1); border: 1px solid rgba(107,143,103,0.25); font-size: 0.88rem; color: var(--sage-dark); line-height: 1.6; margin-top: 0.5rem; }
 
     /* ─── FAQ ────────────────────────────────────────── */
     #faq { padding: 7rem 8vw; background: var(--linen); }
     .faq-inner { max-width: 700px; margin: 0 auto; }
     .faq-items { margin-top: 3rem; }
-    .faq-item {
-      border-bottom: 1px solid var(--rule);
-      overflow: hidden;
-    }
+    .faq-item { border-bottom: 1px solid var(--rule); overflow: hidden; }
     .faq-item:first-child { border-top: 1px solid var(--rule); }
-    .faq-q {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1.5rem; padding: 1.4rem 0;
-      cursor: pointer; user-select: none;
-    }
-    .faq-q span {
-      font-size: 1rem; font-weight: 500;
-      color: var(--ink); line-height: 1.45;
-    }
-    .faq-plus {
-      width: 24px; height: 24px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-    }
+    .faq-q { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.4rem 0; cursor: pointer; user-select: none; }
+    .faq-q span { font-size: 1rem; font-weight: 500; color: var(--ink); line-height: 1.45; }
+    .faq-plus { width: 24px; height: 24px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
     .faq-plus svg { transition: transform 0.3s var(--ease); }
     .faq-item.open .faq-plus svg { transform: rotate(45deg); }
-    .faq-a {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.38s var(--ease);
-    }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.38s var(--ease); }
     .faq-item.open .faq-a { max-height: 180px; }
-    .faq-a p {
-      padding-bottom: 1.4rem;
-      font-size: 0.92rem; color: var(--muted); line-height: 1.75;
-    }
+    .faq-a p { padding-bottom: 1.4rem; font-size: 0.92rem; color: var(--muted); line-height: 1.75; }
 
     /* ─── FOOTER ─────────────────────────────────────── */
-    footer {
-      background: var(--charcoal);
-      padding: 2.5rem 8vw;
-      display: flex; align-items: center;
-      justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-    }
-    .foot-logo {
-      font-family: var(--font-serif);
-      font-size: 1.05rem; font-weight: 400;
-      color: rgba(255,255,255,0.7);
-    }
-    .foot-copy { font-size: 0.76rem; color: rgba(255,255,255,0.3); letter-spacing: 0.03em; }
+    footer { background: var(--charcoal); padding: 2.5rem 8vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .foot-logo { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 400; color: rgba(255,255,255,0.7); }
+    .foot-copy { font-size: 0.76rem; color: rgba(255,255,255,0.3); }
     .foot-links { display: flex; gap: 2rem; }
-    .foot-links a {
-      font-size: 0.75rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      transition: color 0.2s;
-    }
+    .foot-links a { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); transition: color 0.2s; }
     .foot-links a:hover { color: rgba(255,255,255,0.7); }
 
     /* ─── REVEAL ─────────────────────────────────────── */
-    .r {
-      opacity: 0; transform: translateY(22px);
-      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-    }
+    .r { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
     .r.in { opacity: 1; transform: none; }
     .r-d1 { transition-delay: 0.1s; }
     .r-d2 { transition-delay: 0.2s; }
@@ -570,20 +269,16 @@
       #hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-left { padding: 5rem 6vw 3rem; }
       .hero-right { height: 65vw; min-height: 340px; }
-      .hero-right img { object-position: center 20%; }
-      #about { grid-template-columns: 1fr; }
-      .about-photo { min-height: 50vw; }
-      .about-text { padding: 4rem 6vw; }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-right { padding-top: 0; }
       .service-row { grid-template-columns: 60px 1fr; }
       .service-desc { grid-column: 2; padding-top: 0.4rem; padding-bottom: 0.75rem; }
       #oils { grid-template-columns: 1fr; }
       .oils-left { padding: 5rem 6vw 3rem; }
-      .oils-photo { aspect-ratio: 4/3; }
       .oils-right { padding: 3rem 6vw 5rem; }
       .why-row { grid-template-columns: 60px 1fr; }
       .why-desc { grid-column: 2; padding-top: 0.4rem; padding-bottom: 0.75rem; }
-      .gallery-masonry { grid-template-columns: repeat(2, 1fr); }
-      .g-item:nth-child(1), .g-item:nth-child(5) { grid-row: span 1; aspect-ratio: 3/4; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       #contact { grid-template-columns: 1fr; }
       .contact-left { padding: 5rem 6vw 3rem; }
       .contact-right { padding: 3rem 6vw 5rem; }
@@ -591,14 +286,14 @@
       .nav-links { display: none; }
     }
     @media (max-width: 600px) {
-      #services { padding: 5rem 6vw; }
+      #about, #services, #why, #gallery, #faq { padding: 5rem 6vw; }
       .service-row { grid-template-columns: 1fr; gap: 0.5rem; padding: 2rem 0; }
       .service-num { display: none; }
-      #why { padding: 5rem 6vw; }
       .why-row { grid-template-columns: 1fr; gap: 0.5rem; padding: 2rem 0; }
       .why-idx { display: none; }
-      #gallery { padding: 5rem 6vw; }
-      #faq { padding: 5rem 6vw; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .oil-body-inner { grid-template-columns: 70px 1fr; }
+      .oil-thumb { width: 70px; height: 70px; }
     }
   </style>
 </head>
@@ -628,30 +323,18 @@
       <em>energy,<br>balance,</em>
       <strong>and health.</strong>
     </h1>
-    <p class="hero-body">
-      Natural solutions that fit into your real life — personalised for you, guided every step of the way.
-    </p>
+    <p class="hero-body">Natural solutions that fit into your real life — personalised for you, guided every step of the way.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn btn-dark">Start Your Health Journey</a>
       <a href="#oils" class="btn btn-border">Explore the Oils</a>
     </div>
     <div class="hero-divider"></div>
     <div class="hero-stats">
-      <div>
-        <div class="stat-num">10</div>
-        <div class="stat-label">Essential oils</div>
-      </div>
-      <div>
-        <div class="stat-num">100%</div>
-        <div class="stat-label">CPTG certified</div>
-      </div>
-      <div>
-        <div class="stat-num">1:1</div>
-        <div class="stat-label">Personal guidance</div>
-      </div>
+      <div><div class="stat-num">10</div><div class="stat-label">Essential oils</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-label">CPTG certified</div></div>
+      <div><div class="stat-num">1:1</div><div class="stat-label">Personal guidance</div></div>
     </div>
   </div>
-
   <div class="hero-right">
     <img src="img/firsttopimage.jpeg" alt="Alexandra — Wellness Advocate in North Carolina">
     <div class="hero-right-gradient"></div>
@@ -664,25 +347,33 @@
 
 <!-- ─── ABOUT ────────────────────────────────────────── -->
 <section id="about">
-  <div class="about-photo r">
-    <img src="img/firsttopimage.jpeg" alt="Alexandra in North Carolina">
-    <div class="about-photo-label">North Carolina, USA</div>
-  </div>
-  <div class="about-text">
-    <div class="label r">About Me</div>
-    <h2 class="h2 r r-d1">Living a <em>healthy,<br>intentional</em> life.</h2>
-    <p class="r r-d2">
-      I'm Alexandra, living in sunny North Carolina. As a Wellness Advocate at doTERRA, I help people discover the power of natural solutions for better health, sleep, and energy.
-    </p>
-    <p class="r r-d2">
-      I love sports, an active lifestyle, and seeing people genuinely transform their wellbeing. I don't just recommend products — I guide you on a real journey to feeling your best.
-    </p>
-    <div class="about-quote r r-d3">
-      <blockquote>"Health is not a trend, it's a way of life."</blockquote>
-      <cite>— Alexandra</cite>
+  <div class="about-inner">
+    <div class="about-left">
+      <div class="label r">About Me</div>
+      <h2 class="h2 r r-d1">Living a <em>healthy,<br>intentional</em> life.</h2>
+      <p class="r r-d2">
+        I'm Alexandra, living in sunny North Carolina. As a Wellness Advocate at doTERRA, I help people discover the power of natural solutions for better health, sleep, and energy.
+      </p>
+      <p class="r r-d2">
+        I love sports, an active lifestyle, and seeing people genuinely transform their wellbeing. I don't just recommend products — I guide you on a real journey to feeling your best.
+      </p>
+      <div class="about-cta r r-d3">
+        <a href="#contact" class="btn btn-dark">Let's Work Together</a>
+      </div>
     </div>
-    <div class="about-cta r r-d4">
-      <a href="#contact" class="btn btn-dark">Let's Work Together</a>
+
+    <div class="about-right">
+      <div class="about-quote r r-d2">
+        <blockquote>"Health is not a trend, it's a way of life."</blockquote>
+        <cite>— Alexandra</cite>
+      </div>
+      <div class="about-details r r-d3">
+        <div class="about-detail"><div class="about-detail-dot"></div><span>Wellness Advocate at doTERRA</span></div>
+        <div class="about-detail"><div class="about-detail-dot"></div><span>Based in North Carolina, USA</span></div>
+        <div class="about-detail"><div class="about-detail-dot"></div><span>Personalised approach — no templates</span></div>
+        <div class="about-detail"><div class="about-detail-dot"></div><span>Active lifestyle & sports enthusiast</span></div>
+        <div class="about-detail"><div class="about-detail-dot"></div><span>Ongoing support after every purchase</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -694,7 +385,6 @@
     <h2 class="h2 r r-d1">How can I <em>help you?</em></h2>
     <p class="r r-d2">Every person's path to wellness is different. Here is how I create a plan that is uniquely yours.</p>
   </div>
-
   <div class="services-list">
     <div class="service-row r">
       <div class="service-num">01</div>
@@ -734,22 +424,26 @@
   <div class="oils-left">
     <div class="label r">The Kit</div>
     <h2 class="h2 r r-d1">Essential Oil Kit <em>(10 Oils)</em></h2>
-    <p class="r r-d2">
-      I personally use these every day. This curated kit covers the essentials for sleep, energy, immunity, and mood — with everything you need to get started.
+    <p class="oils-intro r r-d2">
+      I personally use these every day. This curated kit covers the essentials for sleep, energy, immunity, and mood.
     </p>
 
+    <!-- Her photo — full image, no crop -->
     <div class="oils-photo r r-d3">
       <img src="img/essential oil.jpeg" alt="Alexandra with doTERRA essential oils">
     </div>
 
-    <div class="oils-approach r">
-      <h4>My approach is different.</h4>
-      <p>
-        I don't sell oils to everyone indiscriminately. First, I learn about your lifestyle, sleep, energy, and goals. Then I create personalised recommendations and give you access to my official doTERRA account — all orders go directly to the company.
-      </p>
+    <!-- Kit product image -->
+    <div class="oils-kit-img r">
+      <img src="img/WhatsApp Image 2026-02-23 at 11.16.34.jpeg" alt="doTERRA Family Essentials Kit">
     </div>
 
-    <div class="oils-goals r">
+    <div class="oils-approach r">
+      <h4>My approach is different.</h4>
+      <p>I don't sell oils to everyone indiscriminately. First, I learn about your lifestyle, sleep, energy, and goals. Then I create personalised recommendations and give you access to my official doTERRA account — all orders go directly to the company.</p>
+    </div>
+
+    <div style="margin-top:2rem;" class="r">
       <div class="oils-goals-label">Filter by goal</div>
       <div class="goal-btns">
         <button class="goal-btn active" onclick="filterOils('all', this)">All</button>
@@ -768,130 +462,140 @@
         <div class="oil-header" onclick="toggleOil(this)">
           <span class="oil-n">01</span>
           <span class="oil-title">Lavender</span>
-          <div class="oil-toggle">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
-            </svg>
+          <div class="oil-toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div>
+        </div>
+        <div class="oil-body">
+          <div class="oil-body-inner">
+            <div class="oil-thumb"><img src="img/WhatsApp Image 2026-02-23 at 11.16.34 (1).jpeg" alt="Lavender" loading="lazy"></div>
+            <p>Helps to relax, calm emotions, and prepare for sleep. Perfect for your evening routine.</p>
           </div>
         </div>
-        <div class="oil-body"><p>Helps to relax, calm emotions, and prepare for sleep. Perfect for your evening routine.</p></div>
       </div>
 
       <div class="oil-item r r-d1" data-tags="energy focus">
         <div class="oil-header" onclick="toggleOil(this)">
           <span class="oil-n">02</span>
           <span class="oil-title">Peppermint</span>
-          <div class="oil-toggle">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
-            </svg>
+          <div class="oil-toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div>
+        </div>
+        <div class="oil-body">
+          <div class="oil-body-inner">
+            <div class="oil-thumb"><img src="img/WhatsApp Image 2026-02-23 at 11.20.38.jpeg" alt="Peppermint" loading="lazy"></div>
+            <p>Refreshes, boosts focus and energy. Great for mornings or during work.</p>
           </div>
         </div>
-        <div class="oil-body"><p>Refreshes, boosts focus and energy. Great for mornings or during work.</p></div>
       </div>
 
       <div class="oil-item r r-d1" data-tags="energy mood">
         <div class="oil-header" onclick="toggleOil(this)">
           <span class="oil-n">03</span>
           <span class="oil-title">Lemon</span>
-          <div class="oil-toggle">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
-            </svg>
+          <div class="oil-toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div>
+        </div>
+        <div class="oil-body">
+          <div class="oil-body-inner">
+            <div class="oil-thumb"><img src="img/WhatsApp Image 2026-02-23 at 11.20.38 (1).jpeg" alt="Lemon" loading="lazy"></div>
+            <p>Elevates mood and creates a sense of cleanliness and freshness in the home. Often used in a diffuser.</p>
           </div>
         </div>
-        <div class="oil-body"><p>Elevates mood and creates a sense of cleanliness and freshness in the home. Often used in a diffuser.</p></div>
       </div>
 
       <div class="oil-item r r-d2" data-tags="immunity skin">
         <div class="oil-header" onclick="toggleOil(this)">
           <span class="oil-n">04</span>
           <span class="oil-title">Tea Tree / Melaleuca</span>
-          <div class="oil-toggle">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
-            </svg>
+          <div class="oil-toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div>
+        </div>
+        <div class="oil-body">
+          <div class="oil-body-inner">
+            <div class="oil-thumb"><img src="img/WhatsApp Image 2026-02-23 at 11.20.38 (2).jpeg" alt="Tea Tree" loading="lazy"></div>
+            <p>Cleansing skin care and daily hygiene support.</p>
           </div>
         </div>
-        <div class="oil-body"><p>Cleansing skin care and daily hygiene support.</p></div>
       </div>
 
       <div class="oil-item r r-d2" data-tags="stress sleep">
         <div class="oil-header" onclick="toggleOil(this)">
           <span class="oil-n">05</span>
           <span class="oil-title">Frankincense</span>
-          <div class="oil-toggle">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
-            </svg>
+          <div class="oil-toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div>
+        </div>
+        <div class="oil-body">
+          <div class="oil-body-inner">
+            <div class="oil-thumb"><img src="img/WhatsApp Image 2026-02-23 at 11.20.38 (3).jpeg" alt="Frankincense" loading="lazy"></div>
+            <p>Promotes calm, grounding, and inner balance. Suitable for meditation and skin care.</p>
           </div>
         </div>
-        <div class="oil-body"><p>Promotes calm, grounding, and inner balance. Suitable for meditation and skin care.</p></div>
       </div>
 
       <div class="oil-item r r-d3" data-tags="immunity energy">
         <div class="oil-header" onclick="toggleOil(this)">
           <span class="oil-n">06</span>
           <span class="oil-title">Oregano</span>
-          <div class="oil-toggle">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
-            </svg>
+          <div class="oil-toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div>
+        </div>
+        <div class="oil-body">
+          <div class="oil-body-inner">
+            <div class="oil-thumb"><img src="img/WhatsApp Image 2026-02-23 at 11.20.38 (4).jpeg" alt="Oregano" loading="lazy"></div>
+            <p>Supports the body during high-stress or busy seasons.</p>
           </div>
         </div>
-        <div class="oil-body"><p>Supports the body during high-stress or busy seasons.</p></div>
       </div>
 
       <div class="oil-item r r-d3" data-tags="immunity">
         <div class="oil-header" onclick="toggleOil(this)">
           <span class="oil-n">07</span>
           <span class="oil-title">On Guard</span>
-          <div class="oil-toggle">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
-            </svg>
+          <div class="oil-toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div>
+        </div>
+        <div class="oil-body">
+          <div class="oil-body-inner">
+            <div class="oil-thumb"><img src="img/WhatsApp Image 2026-02-23 at 11.20.38 (5).jpeg" alt="On Guard" loading="lazy"></div>
+            <p>Everyday immune support blend, especially useful during travel or in public spaces.</p>
           </div>
         </div>
-        <div class="oil-body"><p>Everyday immune support blend, especially useful during travel or in public spaces.</p></div>
       </div>
 
       <div class="oil-item r r-d3" data-tags="energy sport">
         <div class="oil-header" onclick="toggleOil(this)">
           <span class="oil-n">08</span>
           <span class="oil-title">Deep Blue</span>
-          <div class="oil-toggle">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
-            </svg>
+          <div class="oil-toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div>
+        </div>
+        <div class="oil-body">
+          <div class="oil-body-inner">
+            <div class="oil-thumb"><img src="img/WhatsApp Image 2026-02-23 at 11.20.38 (6).jpeg" alt="Deep Blue" loading="lazy"></div>
+            <p>Comfort for muscles and joints after sport or an active day.</p>
           </div>
         </div>
-        <div class="oil-body"><p>Comfort for muscles and joints after sport or an active day.</p></div>
       </div>
 
       <div class="oil-item r r-d3" data-tags="digestion">
         <div class="oil-header" onclick="toggleOil(this)">
           <span class="oil-n">09</span>
           <span class="oil-title">DigestZen</span>
-          <div class="oil-toggle">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
-            </svg>
+          <div class="oil-toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div>
+        </div>
+        <div class="oil-body">
+          <div class="oil-body-inner">
+            <div class="oil-thumb"><img src="img/WhatsApp Image 2026-02-23 at 11.20.39.jpeg" alt="DigestZen" loading="lazy"></div>
+            <p>Supports digestion and eases discomfort after meals. Often used after heavy meals or on the go.</p>
           </div>
         </div>
-        <div class="oil-body"><p>Supports digestion and eases discomfort after meals. Often used after heavy meals or on the go.</p></div>
       </div>
 
       <div class="oil-item r r-d4" data-tags="sleep immunity stress">
         <div class="oil-header" onclick="toggleOil(this)">
           <span class="oil-n">10</span>
           <span class="oil-title">Breathe</span>
-          <div class="oil-toggle">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
-            </svg>
+          <div class="oil-toggle"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div>
+        </div>
+        <div class="oil-body">
+          <div class="oil-body-inner">
+            <div class="oil-thumb"><img src="img/WhatsApp Image 2026-02-23 at 11.20.39 (1).jpeg" alt="Breathe" loading="lazy"></div>
+            <p>Helps you breathe easier and creates a feeling of fresh, clean air. Ideal for sleep and cold/flu season.</p>
           </div>
         </div>
-        <div class="oil-body"><p>Helps you breathe easier and creates a feeling of fresh, clean air. Ideal for sleep and cold/flu season.</p></div>
       </div>
 
     </div>
@@ -929,36 +633,16 @@
       <h2 class="h2 r r-d1">A glimpse into <em>my life.</em></h2>
       <p class="r r-d2">Follow along on Instagram for daily wellness inspiration.</p>
     </div>
-    <a href="https://www.instagram.com/alexandra_kostikovna" target="_blank" rel="noopener" class="gallery-link r r-d2">
-      View on Instagram
-    </a>
+    <a href="https://www.instagram.com/alexandra_kostikovna" target="_blank" rel="noopener" class="gallery-link r r-d2">View on Instagram</a>
   </div>
 
-  <div class="gallery-masonry r r-d2">
-    <div class="g-item">
-      <img src="img/WhatsApp Image 2026-02-23 at 11.16.06.jpeg" alt="" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="img/WhatsApp Image 2026-02-23 at 11.16.06 (1).jpeg" alt="" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="img/WhatsApp Image 2026-02-23 at 11.16.07.jpeg" alt="" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="img/WhatsApp Image 2026-02-23 at 11.16.07 (1).jpeg" alt="" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="img/WhatsApp Image 2026-02-23 at 11.16.34.jpeg" alt="" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="img/WhatsApp Image 2026-02-23 at 11.16.34 (1).jpeg" alt="" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="img/WhatsApp Image 2026-02-23 at 11.17.33.jpeg" alt="" loading="lazy">
-    </div>
-    <div class="g-item">
-      <img src="img/WhatsApp Image 2026-02-23 at 11.20.37.jpeg" alt="" loading="lazy">
-    </div>
+  <div class="gallery-grid r r-d2">
+    <div class="g-item"><img src="img/WhatsApp Image 2026-02-23 at 11.16.06.jpeg" alt="" loading="lazy"></div>
+    <div class="g-item"><img src="img/WhatsApp Image 2026-02-23 at 11.16.06 (1).jpeg" alt="" loading="lazy"></div>
+    <div class="g-item"><img src="img/WhatsApp Image 2026-02-23 at 11.16.07.jpeg" alt="" loading="lazy"></div>
+    <div class="g-item"><img src="img/WhatsApp Image 2026-02-23 at 11.16.07 (1).jpeg" alt="" loading="lazy"></div>
+    <div class="g-item"><img src="img/WhatsApp Image 2026-02-23 at 11.17.33.jpeg" alt="" loading="lazy"></div>
+    <div class="g-item"><img src="img/WhatsApp Image 2026-02-23 at 11.20.37.jpeg" alt="" loading="lazy"></div>
   </div>
 </section>
 
@@ -967,65 +651,33 @@
   <div class="contact-left">
     <div class="label r">Get in Touch</div>
     <h2 class="h2 r r-d1">Start your <em>health journey</em> today.</h2>
-    <p class="r r-d2">
-      Have questions about essential oils, your health goals, or simply want to connect? I respond personally to every message.
-    </p>
-
+    <p class="r r-d2">Have questions about essential oils, your health goals, or simply want to connect? I respond personally to every message.</p>
     <div class="contact-channels r r-d3">
       <a href="https://t.me/+18647685767" target="_blank" rel="noopener" class="channel">
         <div class="channel-icon tg">
-          <svg viewBox="0 0 24 24">
-            <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <div class="channel-text">
-          <strong>Telegram</strong>
-          <span>@alexandra_kostikovna_usa</span>
-        </div>
+        <div class="channel-text"><strong>Telegram</strong><span>+1 (864) 768-5767</span></div>
       </a>
       <a href="https://www.instagram.com/alexandra_kostikovna" target="_blank" rel="noopener" class="channel">
         <div class="channel-icon ig">
-          <svg viewBox="0 0 24 24">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <circle cx="12" cy="12" r="4"/>
-            <circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg>
         </div>
-        <div class="channel-text">
-          <strong>Instagram</strong>
-          <span>@alexandra_kostikovna</span>
-        </div>
+        <div class="channel-text"><strong>Instagram</strong><span>@alexandra_kostikovna</span></div>
       </a>
     </div>
   </div>
-
   <div class="contact-right">
     <h3>Send me a message</h3>
     <form class="form" id="contactForm" onsubmit="handleSubmit(event)">
       <div class="form-row-2">
-        <div class="field">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required>
-        </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="your@email.com" required>
-        </div>
+        <div class="field"><label for="name">Name</label><input type="text" id="name" name="name" placeholder="Your name" required></div>
+        <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="your@email.com" required></div>
       </div>
-      <div class="field">
-        <label for="goal">Main goal</label>
-        <input type="text" id="goalField" name="goal" placeholder="e.g. Better sleep, more energy, stress relief">
-      </div>
-      <div class="field">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="Tell me a little about yourself and what you are looking for..." required></textarea>
-      </div>
-      <div class="form-submit">
-        <button type="submit" class="btn btn-dark">Send Message</button>
-      </div>
-      <div class="form-ok" id="formOk">
-        Thank you — I will be in touch personally very soon.
-      </div>
+      <div class="field"><label for="goalField">Main goal</label><input type="text" id="goalField" name="goal" placeholder="e.g. Better sleep, more energy, stress relief"></div>
+      <div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell me a little about yourself and what you are looking for..." required></textarea></div>
+      <div class="form-submit"><button type="submit" class="btn btn-dark">Send Message</button></div>
+      <div class="form-ok" id="formOk">Thank you — I will be in touch personally very soon.</div>
     </form>
   </div>
 </section>
@@ -1035,63 +687,26 @@
   <div class="faq-inner">
     <div class="label r">FAQ</div>
     <h2 class="h2 r r-d1">Frequently asked <em>questions.</em></h2>
-
     <div class="faq-items">
 
       <div class="faq-item r r-d1">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Are essential oils safe to use?</span>
-          <div class="faq-plus">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
-            </svg>
-          </div>
-        </div>
-        <div class="faq-a">
-          <p>Yes — when used according to dosage guidelines and with CPTG (Certified Pure Tested Grade) standards. doTERRA oils go through rigorous third-party testing to ensure purity and safety. I always walk you through correct usage for your specific situation.</p>
-        </div>
+        <div class="faq-q" onclick="toggleFaq(this)"><span>Are essential oils safe to use?</span><div class="faq-plus"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div></div>
+        <div class="faq-a"><p>Yes — when used according to dosage guidelines and CPTG standards. doTERRA oils go through rigorous third-party testing to ensure purity and safety. I always walk you through correct usage for your specific situation.</p></div>
       </div>
 
       <div class="faq-item r r-d2">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Can children use essential oils?</span>
-          <div class="faq-plus">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
-            </svg>
-          </div>
-        </div>
-        <div class="faq-a">
-          <p>Yes. doTERRA has special product lines designed for children, and many regular oils can be safely used with proper dilution. I will guide you through which oils are appropriate and exactly how to use them safely with children.</p>
-        </div>
+        <div class="faq-q" onclick="toggleFaq(this)"><span>Can children use essential oils?</span><div class="faq-plus"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div></div>
+        <div class="faq-a"><p>Yes. doTERRA has special product lines designed for children, and many regular oils can be safely used with proper dilution. I will guide you through which oils are appropriate and exactly how to use them safely.</p></div>
       </div>
 
       <div class="faq-item r r-d3">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>Is this a subscription? Do I have to commit to regular purchases?</span>
-          <div class="faq-plus">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
-            </svg>
-          </div>
-        </div>
-        <div class="faq-a">
-          <p>No. You can purchase individually whenever you need, or choose to set up a Loyalty Rewards account for better pricing — the choice is entirely yours. There is no pressure or obligation.</p>
-        </div>
+        <div class="faq-q" onclick="toggleFaq(this)"><span>Is this a subscription? Do I have to commit to regular purchases?</span><div class="faq-plus"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div></div>
+        <div class="faq-a"><p>No. You can purchase individually whenever you need, or choose to set up a Loyalty Rewards account for better pricing — the choice is entirely yours. There is no pressure or obligation.</p></div>
       </div>
 
       <div class="faq-item r r-d4">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>How are doTERRA oils different from oils in a pharmacy?</span>
-          <div class="faq-plus">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
-            </svg>
-          </div>
-        </div>
-        <div class="faq-a">
-          <p>Three key differences: purity (no synthetic fillers or additives), no harmful chemicals, and therapeutic-grade potency. Most store-bought essential oils are fragrance-grade and are not designed for health benefits. doTERRA's CPTG standard is independently verified by third parties.</p>
-        </div>
+        <div class="faq-q" onclick="toggleFaq(this)"><span>How are doTERRA oils different from pharmacy oils?</span><div class="faq-plus"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg></div></div>
+        <div class="faq-a"><p>Three key differences: purity (no synthetic fillers), no harmful chemicals, and therapeutic-grade potency. Most store oils are fragrance-grade and not designed for health benefits. doTERRA's CPTG standard is independently verified.</p></div>
       </div>
 
     </div>
@@ -1109,11 +724,9 @@
 </footer>
 
 <script>
-  // Nav scroll
   const nav = document.getElementById('navbar');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 30), { passive: true });
 
-  // Oil accordion
   function toggleOil(header) {
     const item = header.parentElement;
     const open = item.classList.contains('active');
@@ -1121,7 +734,6 @@
     if (!open) item.classList.add('active');
   }
 
-  // Goal filter
   function filterOils(tag, btn) {
     document.querySelectorAll('.goal-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
@@ -1131,7 +743,6 @@
     });
   }
 
-  // FAQ accordion
   function toggleFaq(q) {
     const item = q.parentElement;
     const open = item.classList.contains('open');
@@ -1139,15 +750,12 @@
     if (!open) item.classList.add('open');
   }
 
-  // Form
   function handleSubmit(e) {
     e.preventDefault();
-    const form = document.getElementById('contactForm');
-    form.querySelectorAll('input,textarea,button').forEach(el => el.disabled = true);
+    document.getElementById('contactForm').querySelectorAll('input,textarea,button').forEach(el => el.disabled = true);
     document.getElementById('formOk').style.display = 'block';
   }
 
-  // Scroll reveal
   const ro = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
